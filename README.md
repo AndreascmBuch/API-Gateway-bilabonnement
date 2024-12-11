@@ -16,4 +16,6 @@ Login (Niko):
 
 Abonnement (Buch):
 
+Pris (Buch):
+
 # Bilabonnements interne system
