@@ -14,5 +14,5 @@ https://github.com/AndreascmBuch/eventhandler
 
 Login (Niko):
 
-Pris (Buch):
+Abonnement (Buch):
 
