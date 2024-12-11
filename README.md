@@ -12,7 +12,7 @@ https://github.com/AndreascmBuch/damagemicroserviceø
 Eventhandler API:
 https://github.com/AndreascmBuch/eventhandler
 
-Login (Niko): https://github.com/NikoJulius1/Login-API
+Login: https://github.com/NikoJulius1/Login-API
 
 Abonnement (Buch):
 
