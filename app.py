@@ -5,9 +5,24 @@ app = Flask(__name__)
 
 # Microservices URL'er
 MICROSERVICES = {
-    "kunde_api": "http://127.0.0.1:5000",  # Kunde API
-    "login_api": "http://127.0.0.1:5002"  # Login API
+    "kunde_api": "https://kundeapitry5-h7fnhscsdwfycqfk.northeurope-01.azurewebsites.net/",  # Kunde API
+    "login_api": "https://loggeind-api-aqbehkf0exfsfjgk.northeurope-01.azurewebsites.net/"  # Login API
 }
+
+# Home directory så man kan se hvad der er i API gateway når man besøger
+@app.route('/', methods=['GET'])
+def home():
+    """
+    Gateway overview
+    """
+    return jsonify({
+        "service": "API Gateway",
+        "version": "1.0.0",
+        "routes": {
+            "Kunde API": "/kunde/<endpoint>",
+            "Login API": "/login/<endpoint>"
+        }
+    })
 
 @app.route('/kunde/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def proxy_kunde(path):
