@@ -24,6 +24,7 @@ def home():
         }
     })
 
+# Kunde API proxy
 @app.route('/kunde/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def proxy_kunde(path):
     """
@@ -38,6 +39,7 @@ def proxy_kunde(path):
     )
     return jsonify(response.json()), response.status_code
 
+# Login API proxy
 @app.route('/login/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def proxy_login(path):
     """
