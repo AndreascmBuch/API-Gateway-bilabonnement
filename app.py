@@ -55,4 +55,4 @@ def proxy_login(path):
     return jsonify(response.json()), response.status_code
 
 if __name__ == '__main__':
-    pass
+    app.run(port=5000, debug=True)
