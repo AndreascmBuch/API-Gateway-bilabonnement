@@ -53,3 +53,6 @@ def proxy_login(path):
         json=request.get_json()
     )
     return jsonify(response.json()), response.status_code
+
+if __name__ == '__main__':
+    pass
