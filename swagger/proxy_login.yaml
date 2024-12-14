@@ -1,0 +1,51 @@
+---
+tags:
+  - Login API
+summary: Log in an existing user
+description: Authenticates a user and returns a JWT token if the credentials are valid.
+parameters:
+  - name: body
+    in: body
+    required: true
+    schema:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          description: The username of the user.
+          example: "testuser"
+        password:
+          type: string
+          description: The password of the user.
+          example: "password123"
+responses:
+  200:
+    description: Authentication successful, returns JWT token.
+    schema:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: The JWT access token.
+          example: "eyJhbGciOiJIUzI1NiIsInR5..."
+  400:
+    description: Missing username or password.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Username and password are required"
+  401:
+    description: Invalid username or password.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Invalid username or password"
+  500:
+    description: Internal server error.

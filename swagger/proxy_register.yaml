@@ -1,0 +1,42 @@
+---
+tags:
+  - Login API
+summary: Register a new user
+description: Registers a new user with a username and password.
+parameters:
+  - name: body
+    in: body
+    required: true
+    schema:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          description: The username for the new user.
+          example: "testuser"
+        password:
+          type: string
+          description: The password for the new user.
+          example: "password123"
+responses:
+  201:
+    description: User registered successfully.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "User registered successfully"
+  400:
+    description: Missing username or password.
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Username and password are required"
+  500:
+    description: Internal server error.

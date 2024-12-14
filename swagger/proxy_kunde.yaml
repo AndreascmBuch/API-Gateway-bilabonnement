@@ -1,0 +1,27 @@
+---
+tags:
+  - Kunde API
+summary: Proxy to Kunde API
+description: Proxies requests to the Kunde API microservice.
+parameters:
+  - name: path
+    in: path
+    type: string
+    required: true
+    description: Endpoint to proxy within the Kunde API.
+  - name: body
+    in: body
+    required: false
+    schema:
+      type: object
+      description: Optional JSON payload for the request.
+responses:
+  200:
+    description: Successful response from the Kunde API
+    schema:
+      type: object
+      description: JSON response from the microservice.
+  400:
+    description: Invalid request.
+  500:
+    description: Error in proxying request.

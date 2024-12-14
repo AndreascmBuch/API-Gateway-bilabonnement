@@ -30,6 +30,7 @@ def home():
 
 # Kunde API proxy
 @app.route('/kunde/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@swag_from('swagger/proxy_kunde.yaml')
 def proxy_kunde(path):
     """
     Proxy requests to Kunde API
@@ -43,15 +44,30 @@ def proxy_kunde(path):
     )
     return jsonify(response.json()), response.status_code
 
-# Login API proxy
-@app.route('/login/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
-def proxy_login(path):
+# Login API - Register
+@app.route('/login/register', methods=['POST'])
+@swag_from('swagger/register.yaml')
+def proxy_register():
     """
-    Proxy requests to Login API
+    Proxy requests to Login API - Register
     """
-    service_url = f"{MICROSERVICES['login_api']}/{path}"
-    response = requests.request(
-        method=request.method,
+    service_url = f"{MICROSERVICES['login_api']}/register"
+    response = requests.post(
+        url=service_url,
+        headers={key: value for key, value in request.headers if key != 'Host'},
+        json=request.get_json()
+    )
+    return jsonify(response.json()), response.status_code
+
+# Login API - Login
+@app.route('/login/login', methods=['POST'])
+@swag_from('swagger/login.yaml')
+def proxy_login():
+    """
+    Proxy requests to Login API - Login
+    """
+    service_url = f"{MICROSERVICES['login_api']}/login"
+    response = requests.post(
         url=service_url,
         headers={key: value for key, value in request.headers if key != 'Host'},
         json=request.get_json()
