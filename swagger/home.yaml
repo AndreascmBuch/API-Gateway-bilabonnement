@@ -1,0 +1,22 @@
+---
+tags:
+  - Gateway
+summary: Overview of API Gateway
+description: Provides an overview of the API Gateway and its routes.
+responses:
+  200:
+    description: Successful response
+    schema:
+      type: object
+      properties:
+        service:
+          type: string
+          example: "API Gateway"
+        version:
+          type: string
+          example: "1.0.0"
+        routes:
+          type: object
+          additionalProperties:
+            type: string
+            example: "/kunde/<endpoint>"

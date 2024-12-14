@@ -1,7 +1,10 @@
 from flask import Flask, jsonify, request
 import requests
+from swagger.config import init_swagger
+from flasgger import swag_from
 
 app = Flask(__name__)
+swagger = init_swagger(app)
 
 # Microservices URL'er
 MICROSERVICES = {
@@ -11,6 +14,7 @@ MICROSERVICES = {
 
 # Home directory så man kan se hvad der er i API gateway når man besøger
 @app.route('/', methods=['GET'])
+@swag_from('swagger/home.yaml')
 def home():
     """
     Gateway overview
