@@ -3,6 +3,7 @@ tags:
   - Kunde API
 summary: Proxy to Kunde API
 description: Proxies requests to the Kunde API microservice.
+operationId: getKundeData
 parameters:
   - name: path
     in: path

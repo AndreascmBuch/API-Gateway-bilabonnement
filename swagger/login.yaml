@@ -3,6 +3,7 @@ tags:
   - Login API
 summary: Log in an existing user
 description: Authenticates a user and returns a JWT token if the credentials are valid.
+operationId: logInUser
 parameters:
   - name: body
     in: body

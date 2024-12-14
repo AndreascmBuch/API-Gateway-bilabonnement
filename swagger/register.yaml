@@ -3,6 +3,7 @@ tags:
   - Login API
 summary: Register a new user
 description: Registers a new user with a username and password.
+ operationId: registerUser
 parameters:
   - name: body
     in: body

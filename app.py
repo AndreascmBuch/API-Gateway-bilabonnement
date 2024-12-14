@@ -30,7 +30,7 @@ def home():
 
 # Kunde API proxy
 @app.route('/kunde/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
-@swag_from('swagger/proxy_kunde.yaml')
+@swag_from('swagger/kunde.yaml')
 def proxy_kunde(path):
     """
     Proxy requests to Kunde API
