@@ -1,4 +1,7 @@
-python-dotenv
-Flask
+flask
 requests
 gunicorn
+python-dotenv
+flask-jwt-extended
+bcrypt
+flasgger
