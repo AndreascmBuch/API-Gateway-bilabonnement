@@ -54,7 +54,7 @@ def proxy_kunde(path):
         method=request.method,  # Use the same HTTP method
         url=service_url,        # Forward to the target microservice
         headers={key: value for key, value in request.headers if key != 'Host'},  # Forward headers
-        json=request.get_json()  # Forward JSON payload (if any)
+        json_data=request.get_json()  # Forward JSON payload (if any)
     )
     return jsonify(response.json()), response.status_code
 
