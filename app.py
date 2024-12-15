@@ -31,7 +31,7 @@ def home():
             "Login API": "/login/<endpoint>",
             "Cars API": "/cars/<endpoint>",
             "Abonnement API": "/abonnement/<endpoint>",
-            "Damage API": "/damage/<endpint>",
+            "Damage API": "/damage/<endpoint>",
             "Calculate API":"/"
         }
     })
@@ -145,4 +145,4 @@ def proxy_calculate(path):
 
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run()
