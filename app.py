@@ -13,6 +13,7 @@ MICROSERVICES = {
     "bildatabase_api": "https://bildatabasedemo-hzfbegh6eqfraqdd.northeurope-01.azurewebsites.net/", # Bildatabase API
     "abonnement_api":"https://abonnement-beczhgfth9axdzd9.northeurope-01.azurewebsites.net/", # Abonnement API
     "damage_api":"https://skade-demo-b2awcyb4gedxdnhj.northeurope-01.azurewebsites.net/", # Skadeservice API 
+    "calculate_api": "https://skadeberegner-d9fferbzcgddfycm.northeurope-01.azurewebsites.net/", # Beregning service API 
 }
 
 # Home directory så man kan se hvad der er i API gateway når man besøger
@@ -30,7 +31,8 @@ def home():
             "Login API": "/login/<endpoint>",
             "Cars API": "/cars/<endpoint>",
             "Abonnement API": "/abonnement/<endpoint>",
-            "Damage API": "/damage/<endpint>" 
+            "Damage API": "/damage/<endpint>",
+            "Calculate API":"/"
         }
     })
 
@@ -117,6 +119,22 @@ def proxy_damage(path):
     Proxy requests to Damage API
     """
     service_url = f"{MICROSERVICES['damage_api']}/{path}"
+    response = requests.request(
+        method=request.method,  
+        url=service_url,        
+        headers={key: value for key, value in request.headers if key != 'Host'},  
+        json=request.get_json()  
+    )
+    return jsonify(response.json()), response.status_code
+
+# Calculate API
+@app.route('/calculate/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@swag_from('swagger/calculate.yaml')
+def proxy_calculate(path):
+    """
+    Proxy requests to Calculate API
+    """
+    service_url = f"{MICROSERVICES['calculate_api']}/{path}"
     response = requests.request(
         method=request.method,  
         url=service_url,        

@@ -1,0 +1,63 @@
+swagger: '2.0'
+info:
+  version: "1.0.0"
+  title: "Calculate API"
+  description: "API til beregning af samlede omkostninger for skader og abonnementer."
+basePath: /calculate
+schemes:
+  - https
+paths:
+  /calculate-total-price:
+    post:
+      summary: "Beregn samlet pris"
+      description: "Modtager skadesdata og abonnementsdata og beregner den samlede pris."
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          required: true
+          description: "JSON-data med kunde- og biloplysninger."
+          schema:
+            type: object
+            properties:
+              kunde_id:
+                type: integer
+              car_id:
+                type: string
+              start_date:
+                type: string
+                format: date
+              end_date:
+                type: string
+                format: date
+      responses:
+        200:
+          description: "Samlet pris beregnet."
+          schema:
+            type: object
+            properties:
+              total_damage_cost:
+                type: number
+              total_subscription_cost:
+                type: number
+              total_price:
+                type: number
+        400:
+          description: "Ugyldig forespørgsel."
+  /calculate-total-revenue:
+    get:
+      summary: "Beregn samlet omsætning"
+      description: "Returnerer den samlede omsætning baseret på tidligere beregninger."
+      responses:
+        200:
+          description: "Samlet omsætning beregnet."
+          schema:
+            type: object
+            properties:
+              total_revenue:
+                type: number
+        400:
+          description: "Ugyldig forespørgsel."
