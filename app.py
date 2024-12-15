@@ -92,7 +92,7 @@ def proxy_login():
 @app.route('/cars/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @swag_from('swagger/cars.yaml')
 def proxy_cars(path):
-    service_url = f"{MICROSERVICES['cars_api']}/{path}"
+    service_url = f"{MICROSERVICES['bildatabase_api']}/{path}"
     response = requests.request(
         method=request.method,
         url=service_url,
