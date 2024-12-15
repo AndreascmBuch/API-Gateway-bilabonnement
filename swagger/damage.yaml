@@ -65,4 +65,19 @@ paths:
           description: "Succesfuld opdatering af skade"
     delete:
       summary: "Slet skade"
-      description: "S
+      description: "Sletter en eksisterende skade fra Damage Service."
+      parameters:
+        - name: damage_id
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              damage_id:
+                type: string
+                description: "ID for skaden der skal slettes"
+      responses:
+        200:
+          description: "Succesfuld sletning af skade"
+        404:
+          description: "Skaden blev ikke fundet"
