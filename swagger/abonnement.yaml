@@ -1,0 +1,62 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Abonnement API"
+  description: "Gateway routes for managing subscriptions"
+basePath: "/abonnement"
+paths:
+  /abonnement:
+    get:
+      summary: "Get all subscriptions"
+      responses:
+        200:
+          description: "Success"
+        500:
+          description: "Server error"
+    post:
+      summary: "Create a subscription"
+      parameters:
+        - in: "body"
+          name: "body"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              kunde_id:
+                type: "integer"
+              car_id:
+                type: "integer"
+              term:
+                type: "string"
+              price_per_month:
+                type: "number"
+              start_month:
+                type: "string"
+              end_month:
+                type: "string"
+              restance:
+                type: "number"
+              contract_information:
+                type: "string"
+      responses:
+        201:
+          description: "Subscription created successfully"
+        400:
+          description: "Bad request"
+        500:
+          description: "Server error"
+  /abonnement/{subscription_id}:
+    get:
+      summary: "Get a subscription by ID"
+      parameters:
+        - in: "path"
+          name: "subscription_id"
+          required: true
+          type: "integer"
+      responses:
+        200:
+          description: "Success"
+        404:
+          description: "Subscription not found"
+        500:
+          description: "Server error"
