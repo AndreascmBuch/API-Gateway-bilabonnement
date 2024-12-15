@@ -43,6 +43,12 @@ def proxy_kunde(path):
     """
     Proxy requests to Kunde API
     """
+     # Kun inkluder json for POST og PUT anmodninger
+    if request.method in ['POST', 'PUT']:
+        json_data = request.get_json()
+    else:
+        json_data = None
+        
     service_url = f"{MICROSERVICES['kunde_api']}/{path}"
     response = requests.request(
         method=request.method,  # Use the same HTTP method
