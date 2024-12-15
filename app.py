@@ -10,8 +10,9 @@ swagger = init_swagger(app)
 MICROSERVICES = {
     "kunde_api": "https://kundeapitry5-h7fnhscsdwfycqfk.northeurope-01.azurewebsites.net/",  # Kunde API
     "login_api": "https://loggeind-api-aqbehkf0exfsfjgk.northeurope-01.azurewebsites.net/",  # Login API
-    "bildatabase_API": "https://bildatabasedemo-hzfbegh6eqfraqdd.northeurope-01.azurewebsites.net/", # Bildatabase API
-    "Abonnement_API":"https://abonnement-beczhgfth9axdzd9.northeurope-01.azurewebsites.net/abonnement" # Abonnement API 
+    "bildatabase_api": "https://bildatabasedemo-hzfbegh6eqfraqdd.northeurope-01.azurewebsites.net/", # Bildatabase API
+    "abonnement_api":"https://abonnement-beczhgfth9axdzd9.northeurope-01.azurewebsites.net/", # Abonnement API
+    "damage_api":"https://skade-demo-b2awcyb4gedxdnhj.northeurope-01.azurewebsites.net/", # Skadeservice API 
 }
 
 # Home directory så man kan se hvad der er i API gateway når man besøger
@@ -29,6 +30,7 @@ def home():
             "Login API": "/login/<endpoint>",
             "Cars API": "/cars/<endpoint>",
             "Abonnement API": "/abonnement/<endpoint>",
+            "Damage API": "/damage/<endpint>" 
         }
     })
 
@@ -99,6 +101,22 @@ def proxy_abonnement(path):
     Proxy requests to Abonnement API
     """
     service_url = f"{MICROSERVICES['abonnement_api']}/{path}"
+    response = requests.request(
+        method=request.method,  
+        url=service_url,        
+        headers={key: value for key, value in request.headers if key != 'Host'},  
+        json=request.get_json()  
+    )
+    return jsonify(response.json()), response.status_code
+
+# Damage API
+@app.route('/damage/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@swag_from('swagger/damage.yaml')
+def proxy_damage(path):
+    """
+    Proxy requests to Damage API
+    """
+    service_url = f"{MICROSERVICES['damage_api']}/{path}"
     response = requests.request(
         method=request.method,  
         url=service_url,        

@@ -1,0 +1,68 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Damage Service API"
+  description: "Dokumentation for Damage Service API, der håndterer skadesdata for biler."
+paths:
+  /damage/{path}:
+    get:
+      summary: "Hent skadesdata"
+      description: "Henter data om skader fra Damage Service."
+      parameters:
+        - name: path
+          in: path
+          required: true
+          type: string
+          description: "Endpoint path til Damage API"
+      responses:
+        200:
+          description: "Succesfuld hentning af skadesdata"
+          schema:
+            type: object
+    post:
+      summary: "Opret ny skade"
+      description: "Sender data til Damage Service for at oprette en ny skade."
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              car_id:
+                type: string
+                description: "Bilens ID"
+              damage_type:
+                type: string
+                description: "Type af skade"
+              description:
+                type: string
+                description: "Beskrivelse af skaden"
+      responses:
+        201:
+          description: "Succesfuld oprettelse af skade"
+    put:
+      summary: "Opdater skade"
+      description: "Opdater eksisterende skadedata i Damage Service."
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              damage_id:
+                type: string
+                description: "ID for skaden"
+              damage_type:
+                type: string
+                description: "Type af skade"
+              description:
+                type: string
+                description: "Opdateret beskrivelse af skaden"
+      responses:
+        200:
+          description: "Succesfuld opdatering af skade"
+    delete:
+      summary: "Slet skade"
+      description: "S
