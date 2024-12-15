@@ -76,6 +76,7 @@ def proxy_login():
     )
     return jsonify(response.json()), response.status_code
 
+# Bil API
 @app.route('/cars/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @swag_from('swagger/cars.yaml')
 def proxy_cars(path):
