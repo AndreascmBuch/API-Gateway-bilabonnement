@@ -9,7 +9,8 @@ swagger = init_swagger(app)
 # Microservices URL'er
 MICROSERVICES = {
     "kunde_api": "https://kundeapitry5-h7fnhscsdwfycqfk.northeurope-01.azurewebsites.net/",  # Kunde API
-    "login_api": "https://loggeind-api-aqbehkf0exfsfjgk.northeurope-01.azurewebsites.net/"  # Login API
+    "login_api": "https://loggeind-api-aqbehkf0exfsfjgk.northeurope-01.azurewebsites.net/",  # Login API
+    "bildatabase_API": "https://bildatabasedemo-hzfbegh6eqfraqdd.northeurope-01.azurewebsites.net/" # Bildatabase API 
 }
 
 # Home directory så man kan se hvad der er i API gateway når man besøger
@@ -24,7 +25,8 @@ def home():
         "version": "1.0.0",
         "routes": {
             "Kunde API": "/kunde/<endpoint>",
-            "Login API": "/login/<endpoint>"
+            "Login API": "/login/<endpoint>",
+            "Cars API": "/cars/<endpoint>"
         }
     })
 
@@ -71,6 +73,18 @@ def proxy_login():
         url=service_url,
         headers={key: value for key, value in request.headers if key != 'Host'},
         json=request.get_json()
+    )
+    return jsonify(response.json()), response.status_code
+
+@app.route('/cars/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@swag_from('swagger/cars.yaml')
+def proxy_cars(path):
+    service_url = f"{MICROSERVICES['cars_api']}/{path}"
+    response = requests.request(
+        method=request.method,
+        url=service_url,
+        headers={key: value for key, value in request.headers if key != 'Host'},
+        json=request.get_json() if request.method in ['POST', 'PUT'] else None
     )
     return jsonify(response.json()), response.status_code
 

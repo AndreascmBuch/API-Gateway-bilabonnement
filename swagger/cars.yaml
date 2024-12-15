@@ -1,0 +1,33 @@
+swagger: '2.0'
+info:
+  version: "1.0.0"
+  title: "Cars API Gateway"
+  description: "Proxy for accessing the Cars API."
+paths:
+  /cars/{endpoint}:
+    get:
+      summary: "Proxy GET requests to the Cars API"
+      parameters:
+        - name: endpoint
+          in: path
+          required: true
+          type: string
+          description: "The specific endpoint to proxy to."
+      responses:
+        200:
+          description: "Successful response"
+    post:
+      summary: "Proxy POST requests to the Cars API"
+      parameters:
+        - name: endpoint
+          in: path
+          required: true
+          type: string
+          description: "The specific endpoint to proxy to."
+        - name: body
+          in: body
+          required: true
+          description: "Request payload"
+      responses:
+        201:
+          description: "Resource created successfully"
