@@ -124,12 +124,16 @@ def proxy_damage(path):
     """
     Proxy requests to Damage API
     """
+    if request.method in ['POST', 'PUT']:
+        data = request.get_json()
+    else:
+        data = None 
     service_url = f"{MICROSERVICES['damage_api']}/{path}"
     response = requests.request(
         method=request.method,  
         url=service_url,        
         headers={key: value for key, value in request.headers if key != 'Host'},  
-        json=request.get_json() if request.method in ['POST', 'PUT'] else None
+        json=data
     )
     return jsonify(response.json()), response.status_code
 
