@@ -45,16 +45,16 @@ def proxy_kunde(path):
     """
      # Kun inkluder json for POST og PUT anmodninger
     if request.method in ['POST', 'PUT']:
-        json_data = request.get_json()
+        data = request.get_json()
     else:
-        json_data = None
+        data = None
         
     service_url = f"{MICROSERVICES['kunde_api']}/{path}"
     response = requests.request(
         method=request.method,  # Use the same HTTP method
         url=service_url,        # Forward to the target microservice
         headers={key: value for key, value in request.headers if key != 'Host'},  # Forward headers
-        json_data=request.get_json()  # Forward JSON payload (if any)
+        json=data
     )
     return jsonify(response.json()), response.status_code
 
