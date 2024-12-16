@@ -149,12 +149,16 @@ def proxy_calculate(path):
     """
     Proxy requests to Calculate API
     """
+    if request.method in ['POST', 'PUT']:
+        data = request.get_json()
+    else:
+        data = None
     service_url = f"{MICROSERVICES['calculate_api']}/{path}"
     response = requests.request(
         method=request.method,  
         url=service_url,        
         headers={key: value for key, value in request.headers if key != 'Host'},  
-        json=request.get_json()  
+        json=data
     )
     return jsonify(response.json()), response.status_code
 
