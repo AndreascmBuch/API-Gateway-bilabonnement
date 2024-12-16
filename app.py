@@ -8,8 +8,8 @@ swagger = init_swagger(app)
 
 # Microservices URL'er
 MICROSERVICES = {
-    "kunde_api": "https://kundeapitry5-h7fnhscsdwfycqfk.northeurope-01.azurewebsites.net/",  # Kunde API
-    "login_api": "https://loggeind-api-aqbehkf0exfsfjgk.northeurope-01.azurewebsites.net/",  # Login API
+    "kunde_api": "https://kunde-api-dnecdehugrhmbghu.northeurope-01.azurewebsites.net/",  # Kunde API
+    "login_api": "https://loginmicroservice-cxake5d4d6chg7d0.northeurope-01.azurewebsites.net/",  # Login API
     "bildatabase_api": "https://bildatabasedemo-hzfbegh6eqfraqdd.northeurope-01.azurewebsites.net/", # Bildatabase API
     "abonnement_api":"https://abonnement-beczhgfth9axdzd9.northeurope-01.azurewebsites.net/", # Abonnement API
     "damage_api":"https://skade-demo-b2awcyb4gedxdnhj.northeurope-01.azurewebsites.net/", # Skadeservice API 
