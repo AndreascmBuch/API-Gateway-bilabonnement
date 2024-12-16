@@ -6,6 +6,8 @@ info:
 paths:
   /damage/{path}:
     get:
+      tags:
+        - Skade API
       summary: "Hent skadesdata"
       description: "Henter data om skader fra Damage Service."
       parameters:
@@ -20,6 +22,8 @@ paths:
           schema:
             type: object
     post:
+      tags:
+        - Skade API
       summary: "Opret ny skade"
       description: "Sender data til Damage Service for at oprette en ny skade."
       parameters:
@@ -42,6 +46,8 @@ paths:
         201:
           description: "Succesfuld oprettelse af skade"
     put:
+      tags:
+        - Skade API
       summary: "Opdater skade"
       description: "Opdater eksisterende skadedata i Damage Service."
       parameters:
@@ -64,6 +70,8 @@ paths:
         200:
           description: "Succesfuld opdatering af skade"
     delete:
+      tags:
+        - Skade API
       summary: "Slet skade"
       description: "Sletter en eksisterende skade fra Damage Service."
       parameters:
