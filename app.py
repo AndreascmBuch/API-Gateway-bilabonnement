@@ -127,8 +127,7 @@ def proxy_damage(path):
     service_url = f"{MICROSERVICES['damage_api']}/{path}"
     response = requests.request(
         method=request.method,  
-        url=service_url,        
-        headers={key: value for key, value in request.headers if key != 'Host'},  
+        url=service_url,          
         json=request.get_json()  
     )
     return jsonify(response.json()), response.status_code
