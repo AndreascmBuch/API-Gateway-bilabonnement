@@ -92,12 +92,20 @@ def proxy_login():
 @app.route('/cars/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @swag_from('swagger/cars.yaml')
 def proxy_cars(path):
+    """
+    Proxy requests to CARS API
+    """
+    if request.method in ['POST', 'PUT']:
+        data = request.get_json()
+    else:
+        data = None
+
     service_url = f"{MICROSERVICES['bildatabase_api']}/{path}"
     response = requests.request(
         method=request.method,
         url=service_url,
         headers={key: value for key, value in request.headers if key != 'Host'},
-        json=request.get_json() if request.method in ['POST', 'PUT'] else None
+        json=data
     )
     return jsonify(response.json()), response.status_code
 
