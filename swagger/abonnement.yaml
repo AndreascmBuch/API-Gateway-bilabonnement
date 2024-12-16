@@ -1,4 +1,6 @@
 swagger: "2.0"
+tag: 
+ - abonnemet API
 info:
   version: "1.0.0"
   title: "Abonnement API"
