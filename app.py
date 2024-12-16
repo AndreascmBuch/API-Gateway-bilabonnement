@@ -119,7 +119,7 @@ def proxy_abonnement(path):
 
 # Damage API
 @app.route('/damage/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
-@swag_from('swagger/damage.yaml')
+@swag_from('swagger/damage.yaml')   
 def proxy_damage(path):
     """
     Proxy requests to Damage API
@@ -127,8 +127,9 @@ def proxy_damage(path):
     service_url = f"{MICROSERVICES['damage_api']}/{path}"
     response = requests.request(
         method=request.method,  
-        url=service_url,          
-        json=request.get_json()  
+        url=service_url,        
+        headers={key: value for key, value in request.headers if key != 'Host'},  
+        json=request.get_json() if request.method in ['POST', 'PUT'] else None
     )
     return jsonify(response.json()), response.status_code
 
