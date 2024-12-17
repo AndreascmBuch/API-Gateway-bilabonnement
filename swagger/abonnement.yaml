@@ -1,45 +1,63 @@
 swagger: "2.0"
-tag: 
- - abonnemet API
 info:
   version: "1.0.0"
   title: "Abonnement API"
   description: "Gateway routes for managing subscriptions"
+
+tags:
+  - name: "Abonnement"
+    description: "Endpoints for managing subscriptions"
+
 basePath: "/abonnement"
 paths:
   /abonnement:
     get:
+      tags:
+        - "Abonnement"
       summary: "Get all subscriptions"
+      description: "Retrieve all subscription records."
       responses:
         200:
           description: "Success"
         500:
           description: "Server error"
     post:
+      tags:
+        - "Abonnement"
       summary: "Create a subscription"
+      description: "Create a new subscription with details provided."
       parameters:
         - in: "body"
           name: "body"
           required: true
+          description: "Subscription object that needs to be created"
           schema:
             type: "object"
             properties:
               kunde_id:
                 type: "integer"
+                description: "Customer ID"
               car_id:
                 type: "integer"
+                description: "Car ID"
               term:
                 type: "string"
+                description: "Subscription term"
               price_per_month:
                 type: "number"
+                description: "Monthly price for the subscription"
               start_month:
                 type: "string"
+                description: "Start month of the subscription"
               end_month:
                 type: "string"
+                description: "End month of the subscription"
               restance:
                 type: "number"
+                description: "Remaining balance for the subscription"
               contract_information:
                 type: "string"
+                description: "Contract details"
       responses:
         201:
           description: "Subscription created successfully"
@@ -49,12 +67,16 @@ paths:
           description: "Server error"
   /abonnement/{subscription_id}:
     get:
+      tags:
+        - "Abonnement"
       summary: "Get a subscription by ID"
+      description: "Retrieve subscription details for a specific subscription ID."
       parameters:
         - in: "path"
           name: "subscription_id"
           required: true
           type: "integer"
+          description: "ID of the subscription to retrieve"
       responses:
         200:
           description: "Success"
