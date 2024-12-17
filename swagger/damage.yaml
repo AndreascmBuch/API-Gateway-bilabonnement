@@ -3,11 +3,15 @@ info:
   version: "1.0.0"
   title: "Damage Service API"
   description: "Dokumentation for Damage Service API, der håndterer skadesdata for biler."
+
+tags:
+  - name: "Skade API"
+
 paths:
   /damage/{path}:
     get:
       tags:
-        - Skade API
+        - "Skade API"
       summary: "Hent skadesdata"
       description: "Henter data om skader fra Damage Service."
       parameters:
@@ -21,15 +25,19 @@ paths:
           description: "Succesfuld hentning af skadesdata"
           schema:
             type: object
+        500:
+          description: "Serverfejl"
+
     post:
       tags:
-        - Skade API
+        - "Skade API"
       summary: "Opret ny skade"
       description: "Sender data til Damage Service for at oprette en ny skade."
       parameters:
         - name: body
           in: body
           required: true
+          description: "Objekt med skadesdata, der skal oprettes"
           schema:
             type: object
             properties:
@@ -45,15 +53,21 @@ paths:
       responses:
         201:
           description: "Succesfuld oprettelse af skade"
+        400:
+          description: "Ugyldig anmodning"
+        500:
+          description: "Serverfejl"
+
     put:
       tags:
-        - Skade API
+        - "Skade API"
       summary: "Opdater skade"
       description: "Opdater eksisterende skadedata i Damage Service."
       parameters:
         - name: body
           in: body
           required: true
+          description: "Objekt med opdaterede skadesdata"
           schema:
             type: object
             properties:
@@ -69,15 +83,23 @@ paths:
       responses:
         200:
           description: "Succesfuld opdatering af skade"
+        400:
+          description: "Ugyldig anmodning"
+        404:
+          description: "Skaden blev ikke fundet"
+        500:
+          description: "Serverfejl"
+
     delete:
       tags:
-        - Skade API
+        - "Skade API"
       summary: "Slet skade"
       description: "Sletter en eksisterende skade fra Damage Service."
       parameters:
-        - name: damage_id
+        - name: body
           in: body
           required: true
+          description: "Objekt med ID for skaden, der skal slettes"
           schema:
             type: object
             properties:
@@ -89,3 +111,7 @@ paths:
           description: "Succesfuld sletning af skade"
         404:
           description: "Skaden blev ikke fundet"
+        400:
+          description: "Ugyldig anmodning"
+        500:
+          description: "Serverfejl"
