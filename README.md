@@ -1,24 +1,24 @@
 # API-Gateway
 
-Kunde API:
+**Kunde API**:
 https://github.com/NikoJulius1/Kunde-api
 
-Bil API:
+**Bil API**:
 https://github.com/AndreascmBuch/Bil_Database_API
 
-Skade API:
+**Skade API**:
 https://github.com/AndreascmBuch/damagemicroserviceø
 
-Eventhandler API:
+**Eventhandler API**:
 https://github.com/AndreascmBuch/eventhandler
 
-Login API: 
+**Login API**: 
 https://github.com/NikoJulius1/Login-API
 
-Abonnement API:
+**Abonnement API**:
 https://github.com/AndreascmBuch/abonnementapi 
 
-Pris API: 
+**Pris API**: 
 https://github.com/AndreascmBuch/Prisberegner
 
 # API Gateway
@@ -121,33 +121,38 @@ Response (JWT):
 }
 ```
 
-4. Bil API
-URL: /cars/<endpoint>
-Methods: GET, POST, PUT, DELETE
-Beskrivelse: Proxyruter til Cars API.
-5. Abonnement API
-URL: /abonnement/<endpoint>
-Methods: GET, POST, PUT, DELETE
-Beskrivelse: Proxyruter til Abonnement API.
-6. Damage API
-URL: /damage/<endpoint>
-Methods: GET, POST, PUT, DELETE
-Beskrivelse: Proxyruter til Damage API.
-7. Calculate API
-URL: /calculate/<endpoint>
-Methods: GET, POST, PUT, DELETE
-Beskrivelse: Proxyruter til Calculate API.
-Swagger Dokumentation
+4. **Bil API**
+**URL**: `/cars/<endpoint>`
+**Methods**: `GET`, `POST`, `PUT`, `DELETE`
+**Beskrivelse**: Proxyruter til Cars API.
+
+5. **Abonnement API**
+**URL**: `/abonnement/<endpoint>`
+**Methods**: `GET`, `POST`, `PUT`, `DELETE`
+**Beskrivelse**: Proxyruter til Abonnement API.
+
+6. **Damage API**
+**URL**: `/damage/<endpoint>`
+**Methods**: `GET`, `POST`, `PUT`, `DELETE`
+**Beskrivelse**: Proxyruter til Damage API.
+
+7. **Calculate API**
+**URL**: `/calculate/<endpoint>`
+**Methods**: `GET`, `POST`, `PUT`, `DELETE`
+**Beskrivelse**: Proxyruter til Calculate API.
+
+### Swagger Dokumentation
 Swagger UI er tilgængelig for at visualisere API'et:
 
-URL: /docs
+**URL**: `/docs`
 Swagger genereres automatisk baseret på yaml-filerne placeret i mappen swagger.
 
 Eksempel på .env-fil
 API Gateway anvender følgende miljøvariable:
 
-bash
-Kopier kode
+```bash
 FLASK_ENV=development
-Licens
+```
+
+### Licens
 Dette projekt er licenseret under MIT License. Du er velkommen til at bruge og tilpasse det til dine behov.
