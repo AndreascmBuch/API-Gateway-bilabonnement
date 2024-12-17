@@ -131,12 +131,12 @@ Response (JWT):
 **Methods**: `GET`, `POST`, `PUT`, `DELETE`
 **Beskrivelse**: Proxyruter til Abonnement API.
 
-6. **Damage API**
+8. **Damage API**
 **URL**: `/damage/<endpoint>`
 **Methods**: `GET`, `POST`, `PUT`, `DELETE`
 **Beskrivelse**: Proxyruter til Damage API.
 
-7. **Calculate API**
+9. **Calculate API**
 **URL**: `/calculate/<endpoint>`
 **Methods**: `GET`, `POST`, `PUT`, `DELETE`
 **Beskrivelse**: Proxyruter til Calculate API.
