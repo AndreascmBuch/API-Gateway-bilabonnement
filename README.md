@@ -12,10 +12,13 @@ https://github.com/AndreascmBuch/damagemicroserviceø
 Eventhandler API:
 https://github.com/AndreascmBuch/eventhandler
 
-Login: https://github.com/NikoJulius1/Login-API
+Login API: 
+https://github.com/NikoJulius1/Login-API
 
-Abonnement (Buch):
+Abonnement API:
+https://github.com/AndreascmBuch/abonnementapi 
 
-Pris (Buch):
+Pris API: 
+https://github.com/AndreascmBuch/Prisberegner
 
 # Bilabonnements interne system
