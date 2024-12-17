@@ -3,12 +3,19 @@ info:
   version: "1.0.0"
   title: "Calculate API"
   description: "API til beregning af samlede omkostninger for skader og abonnementer."
+
+tags:
+  - name: "Calculate API"
+
 basePath: /calculate
 schemes:
   - https
+
 paths:
   /calculate-total-price:
     post:
+      tags:
+        - "Calculate API"
       summary: "Beregn samlet pris"
       description: "Modtager skadesdata og abonnementsdata og beregner den samlede pris."
       consumes:
@@ -25,14 +32,18 @@ paths:
             properties:
               kunde_id:
                 type: integer
+                description: "ID for kunden"
               car_id:
                 type: string
+                description: "ID for bilen"
               start_date:
                 type: string
                 format: date
+                description: "Startdato for beregningen"
               end_date:
                 type: string
                 format: date
+                description: "Slutdato for beregningen"
       responses:
         200:
           description: "Samlet pris beregnet."
@@ -41,16 +52,26 @@ paths:
             properties:
               total_damage_cost:
                 type: number
+                description: "Den samlede skadesomkostning"
               total_subscription_cost:
                 type: number
+                description: "Den samlede abonnementsomkostning"
               total_price:
                 type: number
+                description: "Den samlede pris"
         400:
           description: "Ugyldig forespørgsel."
+        500:
+          description: "Serverfejl."
+
   /calculate-total-revenue:
     get:
+      tags:
+        - "Calculate API"
       summary: "Beregn samlet omsætning"
       description: "Returnerer den samlede omsætning baseret på tidligere beregninger."
+      produces:
+        - application/json
       responses:
         200:
           description: "Samlet omsætning beregnet."
@@ -59,5 +80,8 @@ paths:
             properties:
               total_revenue:
                 type: number
+                description: "Den samlede omsætning"
         400:
           description: "Ugyldig forespørgsel."
+        500:
+          description: "Serverfejl."
