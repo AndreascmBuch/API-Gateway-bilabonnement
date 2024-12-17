@@ -6,7 +6,6 @@ info:
 
 tags:
   - name: "Abonnement"
-    description: "Endpoints for managing subscriptions"
 
 basePath: "/abonnement"
 paths:
