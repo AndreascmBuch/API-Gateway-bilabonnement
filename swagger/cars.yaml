@@ -3,31 +3,56 @@ info:
   version: "1.0.0"
   title: "Cars API Gateway"
   description: "Proxy for accessing the Cars API."
+
+tags:
+  - name: "Cars API"
+
 paths:
   /cars/{endpoint}:
     get:
+      tags:
+        - "Cars API"
       summary: "Proxy GET requests to the Cars API"
+      description: "Sender en GET-anmodning til den angivne Cars API-endpoint."
       parameters:
         - name: endpoint
           in: path
           required: true
           type: string
-          description: "The specific endpoint to proxy to."
+          description: "Det specifikke endpoint til at sende GET-anmodningen til."
       responses:
         200:
-          description: "Successful response"
+          description: "Succesfuldt svar fra Cars API."
+        400:
+          description: "Ugyldig forespørgsel."
+        500:
+          description: "Serverfejl."
+
     post:
+      tags:
+        - "Cars API"
       summary: "Proxy POST requests to the Cars API"
+      description: "Sender en POST-anmodning til den angivne Cars API-endpoint med en payload."
       parameters:
         - name: endpoint
           in: path
           required: true
           type: string
-          description: "The specific endpoint to proxy to."
+          description: "Det specifikke endpoint til at sende POST-anmodningen til."
         - name: body
           in: body
           required: true
-          description: "Request payload"
+          description: "JSON payload som sendes til Cars API."
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                description: "Request payload data til Cars API."
       responses:
         201:
-          description: "Resource created successfully"
+          description: "Ressource oprettet succesfuldt."
+        400:
+          description: "Ugyldig forespørgsel."
+        500:
+          description: "Serverfejl."
