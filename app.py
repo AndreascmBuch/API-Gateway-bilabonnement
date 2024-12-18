@@ -45,7 +45,8 @@ def home():
             "Damage API PUT":"/damageapi/damage/change/<int:damage_id>",
             "Damage API DELETE":"/damageapi/damage/delete/<int:damage_id>",
             "Calculate API GET total price":"/calculateapi/calculate-total-price",
-            "Calculate API GET get all revennue":"/calculateapi/get-all-calculations"
+            "Calculate API GET get all calculations":"/calculateapi/get-all-calculations",
+            "Calculate API GET get total revenue":"/calculateapi/get-all-calculations"
         }
     })
 
