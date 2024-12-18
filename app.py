@@ -29,23 +29,23 @@ def home():
         "routes": {
             "Kunde API POST":"/kundeapi/adduser",
             "Kunde API GET":"/kundeapi/customers",
-            "Kunde API GET":"/kundeapi/<int:kunde_id>",
+            "Kunde API GET kunde by ID":"/kundeapi/<int:kunde_id>",
             "Kunde API DELETE":"/kundeapi/delete/<int:kunde_id>",
-            "Login API POST":"/loginapi/register",
-            "Login API POST":"/loginapi/login",
-            "Cars API GET":"/carsapi/cars",
-            "Cars API GET":"/carsapi/cars/<int:car_id>",
+            "Login API POST to register":"/loginapi/register",
+            "Login API POST to login":"/loginapi/login",
+            "Cars API GET Cars":"/carsapi/cars",
+            "Cars API GET cars by ID ":"/carsapi/cars/<int:car_id>",
             "Cars API POST":"/carsapi/cars/add", 
             "Cars API DELETE":"/carsapi/cars/delete/<int:car_id>", 
             "Abonnement API GET":"/abonnementapi/abonnement",
             "Abonnement API POST":"/abonnementapi/abonnement/add",
-            "Abonnement API GET":"/abonnementapi/abonnement/<int:subscription_id>",
+            "Abonnement API GET Abonnement by ID":"/abonnementapi/abonnement/<int:subscription_id>",
             "Damage API GET":"/damageapi/damage",
             "Damage API POST":"/damageapi/damage/add",
             "Damage API PUT":"/damageapi/damage/change/<int:damage_id>",
             "Damage API DELETE":"/damageapi/damage/delete/<int:damage_id>",
-            "Calculate API GET":"/calculateapi/calculate-total-price",
-            "Calculate API GET":"/calculateapi/get-all-calculations"
+            "Calculate API GET total price":"/calculateapi/calculate-total-price",
+            "Calculate API GET get all revennue":"/calculateapi/get-all-calculations"
         }
     })
 
