@@ -27,17 +27,30 @@ def home():
         "service": "API Gateway",
         "version": "1.0.0",
         "routes": {
-            "Kunde API": "/kunde/<endpoint>",
-            "Login API": "/login/<endpoint>",
-            "Cars API": "/cars/<endpoint>",
-            "Abonnement API": "/abonnement/<endpoint>",
-            "Damage API": "/damage/<endpoint>",
-            "Calculate API":"/"
+            "Kunde API POST": "/kundeapi/adduser",
+            "Kunde API GET": "/kundeapi/customers",
+            "Kunde API GET": "/kundeapi/<int:kunde_id>",
+            "Kunde API DELETE": "/kundeapi/delete/<int:kunde_id>",
+            "Login API POST": "/loginapi/register",
+            "Login API POST": "/loginapi/login",
+            "Cars API GET": "/carsapi/cars",
+            "Cars API GET": "/carsapi/cars/<int:car_id>",
+            "Cars API POST": "/carsapi/cars/add", 
+            "Cars API DELETE": "/carsapi/cars/delete/<int:car_id>", 
+            "Abonnement API GET": "/abonnementapi/abonnement",
+            "Abonnement API POST": "/abonnementapi/abonnement/add",
+            "Abonnement API GET": "/abonnementapi/abonnement/<int:subscription_id>",
+            "Damage API GET": "/damageapi/damage",
+            "Damage API POST": "/damageapi/damage/add",
+            "Damage API PUT": "/damageapi/damage/change/<int:damage_id>",
+            "Damage API DELETE": "/damageapi/damage/delete/<int:damage_id>",
+            "Calculate API GET":"/calculateapi/calculate-total-price",
+            "Calculate API GET":"/calculateapi/get-all-calculations"
         }
     })
 
 # Kunde API proxy
-@app.route('/kunde/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@app.route('/kundeapi/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @swag_from('swagger/kunde.yaml')
 def proxy_kunde(path):
     """
@@ -59,7 +72,7 @@ def proxy_kunde(path):
     return jsonify(response.json()), response.status_code
 
 # Login API - Register
-@app.route('/login/register', methods=['POST'])
+@app.route('/loginapi/register', methods=['POST'])
 @swag_from('swagger/register.yaml')
 def proxy_register():
     """
@@ -74,7 +87,7 @@ def proxy_register():
     return jsonify(response.json()), response.status_code
 
 # Login API - Login
-@app.route('/login/login', methods=['POST'])
+@app.route('/loginapi/login', methods=['POST'])
 @swag_from('swagger/login.yaml')
 def proxy_login():
     """
@@ -89,7 +102,7 @@ def proxy_login():
     return jsonify(response.json()), response.status_code
 
 # Bil API
-@app.route('/cars/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@app.route('/carsapi/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @swag_from('swagger/cars.yaml')
 def proxy_cars(path):
     """
@@ -110,7 +123,7 @@ def proxy_cars(path):
     return jsonify(response.json()), response.status_code
 
  # Abonnement API
-@app.route('/abonnement/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@app.route('/abonnementapi/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @swag_from('swagger/abonnement.yaml')
 def proxy_abonnement(path):
     """
@@ -132,7 +145,7 @@ def proxy_abonnement(path):
     return jsonify(response.json()), response.status_code
 
 # Damage API
-@app.route('/damage/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@app.route('/damageapi/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @swag_from('swagger/damage.yaml')   
 def proxy_damage(path):
     """
@@ -157,7 +170,7 @@ def proxy_damage(path):
     return jsonify(response.json()), response.status_code
 
 # Calculate API
-@app.route('/calculate/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@app.route('/calculateapi/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 @swag_from('swagger/calculate.yaml')
 def proxy_calculate(path):
     """
