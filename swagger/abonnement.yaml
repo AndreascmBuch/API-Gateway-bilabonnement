@@ -5,8 +5,7 @@ info:
   description: "Gateway routes for managing subscriptions"
 
 tags:
-  - name: "Abonnement"
-    description: "Endpoints for managing subscriptions"
+  - name: "Abonnement API"
 
 basePath: "/abonnement"
 paths:
